@@ -18,11 +18,8 @@ with open('calls.csv', 'r') as f:
 输出信息：
 "There are <count> different telephone numbers in the records."""
 
-phone_list = set()
-for text in texts:
-  phone_list.add(text[0])
-  phone_list.add(text[1])
-for call in calls:
-  phone_list.add(text[0])
-  phone_list.add(text[1])
-print("There are {} different telephone numbers in the records.".format(len(phone_list)))
+textPhone, receiveText, textTime = zip(*texts)
+callPhone, receiveCall, callTime, seconds = zip(*calls)
+# set中  x | y 并集
+numCount = len(set(textPhone) | set(receiveText) | set(callPhone) | set(receiveCall))
+print("There are {} different telephone numbers in the records".format(numCount))

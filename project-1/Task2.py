@@ -34,8 +34,18 @@ for call in calls:
   phone_dict[call[0]] += int(call[3])
   phone_dict[call[1]] += int(call[3])
 
-for key, val in phone_dict.items():
-  if int(val) > max_call:
-    max_call = int(val)
-    max_phone = key
+# old function
+# for key, val in phone_dict.items():
+#   if int(val) > max_call:
+#     max_call = int(val)
+#     max_phone = key
+
+# use sorted
+# max_phone = sorted(phone_dict, key=lambda x:phone_dict[x])[-1]
+# max_call = phone_dict[max_phone]
+
+# use max 
+max_phone = max(phone_dict, key=lambda x: phone_dict[x])
+max_call = phone_dict[max_phone]
+
 print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(max_phone,max_call))

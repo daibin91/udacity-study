@@ -25,11 +25,11 @@ with open('calls.csv', 'r') as f:
 <list of numbers>
 电话号码不能重复，每行打印一条，按字典顺序排序后输出。
 """
-phone_promoter = set()
-for call in calls:
-  # 电话促销员
-  if call[0].find("140") == 0:
-    phone_promoter.add(call[0])
+
+
+callPhone, receiveCall, c, d = zip(*calls)
+textPhone, c, time = zip(*texts)
+phone_promoter = set(callPhone) - set(receiveCall) - set(textPhone) - set(textPhone)
 
 for phone in phone_promoter:
   print("These numbers could be telemarketers: {}".format(phone))
