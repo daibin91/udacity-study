@@ -40,29 +40,30 @@ to other fixed lines in Bangalore."
 注意：百分比应包含2位小数。
 """
 area_code = "(080)"
-area_list = []
-all_number = 0
-all_area = []
-all_code = []
-phone_promoter = set()
+call_list = []
+answer_list = []
+all_area_code = set()
+
 for call in calls:
   # 班加罗尔地区的固定电话所拨打
   if call[0].find(area_code) == 0:
-    all_number += 1
-    area_list.append(call[1])
-    # print("The numbers called by people in Bangalore have codes: {}".format(call[1]))
+    call_list.append(call[1])
+
+    # 接听是班加罗尔
+    if call[1].find(area_code) == 0:
+        answer_list.append(call[1])
 
     # 电话区号
-    if call[1].find(area_code) == 0:
-      all_area.append(call[1])
+    if call[1].find("(0") == 0:
+        all_area_code.add(str(call[1]).split(")")[0].replace("(",""))
 
     # 移动电话
     if call[1].find(" ") != -1:
-      all_code.append(call[1])
+        all_area_code.add(str(call[1]).split(" ")[0])
 
-area_list = sorted(area_list)
-for item in area_list:
+all_area_code = sorted(all_area_code)
+for item in all_area_code:
     print("The numbers called by people in Bangalore have codes: {}".format(item))
 
-call_per = str(round(len(all_area)/len(all_code)*100, 2)) + " %"
+call_per = str(round(len(answer_list)/len(call_list)*100, 2)) + " %"
 print("{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(call_per))

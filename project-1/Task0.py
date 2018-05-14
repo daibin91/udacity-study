@@ -20,7 +20,7 @@ with open('calls.csv', 'r') as f:
 """
 
 text = texts[0]
-print("First record of texts, {} texts {} at time {}".format(*text[0]))
+print("First record of texts, {} texts {} at time {}".format(*text))
 
 call = calls[-1]
-print("Last record of calls, {} calls {} at time {}, lasting {} seconds".format(*call[0]))
+print("Last record of calls, {} calls {} at time {}, lasting {} seconds".format(*call))

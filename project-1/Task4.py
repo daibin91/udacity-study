@@ -30,6 +30,6 @@ with open('calls.csv', 'r') as f:
 callPhone, receiveCall, c, d = zip(*calls)
 textPhone, c, time = zip(*texts)
 phone_promoter = set(callPhone) - set(receiveCall) - set(textPhone) - set(textPhone)
-
+phone_promoter = sorted(phone_promoter)
 for phone in phone_promoter:
   print("These numbers could be telemarketers: {}".format(phone))
