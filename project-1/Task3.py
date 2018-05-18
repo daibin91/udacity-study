@@ -55,11 +55,11 @@ for call in calls:
 
     # 电话区号
     if call[1].find("(0") == 0:
-        all_area_code.add(str(call[1]).split(")")[0].replace("(",""))
+        all_area_code.add(call[1].split(")")[0].replace("(",""))
 
     # 移动电话
     if call[1].find(" ") != -1:
-        all_area_code.add(str(call[1]).split(" ")[0])
+        all_area_code.add(call[1][:4])
 
 all_area_code = sorted(all_area_code)
 for item in all_area_code:
